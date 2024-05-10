@@ -3,6 +3,7 @@
  */
 package back;
 
+import back.services.DijkstraService;
 import back.services.KruskalService;
 import back.services.PrimService;
 import io.javalin.Javalin;
@@ -18,7 +19,8 @@ public class App {
         // Définition des routes
         app.get("/", App::getHome);
         app.post("/prim", PrimService::getShortPath);
-        app.post("kruskal", KruskalService::getShortPath);
+        app.post("/kruskal", KruskalService::getShortPath);
+        app.post("/dijkstra", DijkstraService::getShortPath);
     }
 
     public static void getHome(Context ctx) {

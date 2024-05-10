@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 
+import back.models.Dijkstra;
 import back.models.Graphe;
 import back.models.GrapheJson;
 
@@ -25,7 +26,7 @@ public class DijkstraService {
 
             // Recherche du chemin optimal
 
-            ctx.status(200).json("Message added succesfully ...");
+            ctx.status(200).json(Dijkstra.dijkstra(g, g.noeuds.get(0)));
         }catch (Exception e){
             e.printStackTrace();
             ctx.status(500).json(e.getMessage());
