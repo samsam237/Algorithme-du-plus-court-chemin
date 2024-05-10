@@ -1,13 +1,25 @@
-package main.java.back.models;
+package back.models;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Graphe {
-    public List<Noeud> noeuds = new ArrayList<>();;
-    public List<Arrete> arretes = new ArrayList<>();
-    // public boolean isOriented;
+    public LinkedList<Noeud> noeuds = new LinkedList<>();;
+    public LinkedList<Arret> arretes = new LinkedList<>();
+    public boolean isOriented = false;
+
+    public Noeud getNoeudFromID(String noeudID) {
+        for (Noeud n : this.noeuds) {
+            if (n.ID.equals(noeudID)) {
+                return n;
+            }
+        }
+        return null;
+    }
+    
     public Graphe (){}
+
 
     // Faire un graphe a partir d'un fichier JSON
     //public 
@@ -16,7 +28,7 @@ public class Graphe {
         this.noeuds.add(n);       
     }
 
-    public void addArrete (Arrete a){
+    public void addArrete (Arret a){
         this.arretes.add(a);
     }
 }

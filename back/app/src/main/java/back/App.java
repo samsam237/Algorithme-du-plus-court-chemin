@@ -3,12 +3,25 @@
  */
 package back;
 
+import back.services.KruskalService;
+import back.services.PrimService;
+import io.javalin.Javalin;
+import io.javalin.http.Context;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        
+        // Initialisation de Javalin
+        Javalin app = Javalin.create().start(7000);
+
+        // Définition des routes
+        app.get("/", App::getHome);
+        app.post("/prim", PrimService::getShortPath);
+        app.post("kruskal", KruskalService::getShortPath);
+    }
+
+    public static void getHome(Context ctx) {
+        ctx.json("hello world");
     }
 }

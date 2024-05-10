@@ -1,11 +1,15 @@
-package main.java.back.models;
+package back.models;
 
-public class Arret {
-    public String source, target;
+public class Arret implements Comparable <Arret> {
+    public Noeud source, target;
     public int poids;
 
-    public Arrete (String sourceLabel, String targetLabel, int poids){
-        this.source = sourceLabel; this.target = targetLabel; this.poids = poids;
-    
+    public Arret (Noeud source, Noeud target, int poids){
+        this.source = source; this.target = target; this.poids = poids;
     }    
+
+    @Override
+    public int compareTo(Arret other) {
+        return Integer.compare(this.poids, other.poids) ;
+    }
 }
